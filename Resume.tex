@@ -1,0 +1,259 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Anurag Shettigar's CV},
+    pdfauthor={Anurag Shettigar},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+% Settings
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0cm}
+\makeatletter
+\let\ps@customFooterStyle\ps@plain
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Anurag Shettigar - Page \thepage{} of \pageref*{LastPage}}
+}{}{} 
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    -1pt
+}{
+    0.3 cm
+}{
+    0.2 cm
+}
+
+\renewcommand\labelitemi{$\circ$}
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+
+\newcommand{\placelastupdatedtext}{
+  \AddToShipoutPictureFG*{
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in December 2024}\hspace{\widthof{Last updated in December 2024}}
+    }}}%
+  }%
+}
+
+\let\hrefWithoutArrow\href
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \textbf{\fontsize{24 pt}{24 pt}\selectfont Anurag Shettigar}
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Pune, Maharashtra}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:anuragas09@gmail.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}anuragas09@gmail.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+919082324003}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}+91 908 232 4003}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\href{https://github.com/Anoteros09}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}Anoteros09}}%
+    \end{header}
+
+    \vspace{0.3 cm}
+
+    \section{Experience}
+        \begin{twocolentry}{
+        \textit{Pune}    
+        \textit{Jan 2024 – Present}}
+            \textbf{Senior Systems Engineer}
+            
+            \textit{Infosys Limited}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Led full-stack development of a resource planning application for airport operations, demonstrating expertise in both frontend and backend development including database management
+                \item Implemented rigorous code review processes that led to a 20\% reduction in post-release bugs, maintaining high code quality standards
+                \item Recognized as Subject Matter Expert (SME) in React.js and Julia, providing technical guidance and mentoring junior developers
+                \item Designed and implemented a resource optimization feature that improved operational efficiency by 15\% through better staffing patterns and resource allocation
+                \item Conducted client demonstrations and efficiently integrated feedback into the development process, ensuring alignment with business requirements
+                \item Developed an innovative feature for analyzing airplane maintenance schedules and predicting backup options, minimizing operational downtime
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+        \textit{Pune}    
+        \textit{Nov 2021 – Dec 2023}}
+            \textbf{Systems Engineer}
+            
+            \textit{Infosys Limited}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed data-driven applications for predicting future operational costs using historical data, showcasing strong analytical skills
+                \item Created reusable components and maintained coding best practices while providing critical problem-solving support
+                \item Specialized in designing and building applications to meet complex business and operational requirements
+                \item Actively participated in Agile development processes, contributing to sprint planning, daily stand-ups, and retrospectives
+                \item Led initiatives in performance optimization and maintaining scalable applications using TeamCity
+                \item Demonstrated expertise in full-stack development with a focus on frontend technologies and RESTful API integration
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Education}
+        \begin{twocolentry}{
+        \textit{2017 – 2021}}
+            \textbf{S.I.T.R.C.}
+            
+            \textit{Bachelors in Engineering}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+        \textit{2015 – 2017}}
+            \textbf{SIES College of Science, Arts \& Commerce}
+            
+            \textit{HSC}
+        \end{twocolentry}
+
+    \section{Awards}
+        \begin{twocolentry}{
+        \textit{Oct 2023}}
+            \textbf{Certificate of Appreciation}
+            
+            \textit{Gail Deilman, MD (Revenue and Customer Experience Systems), United Airlines}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            For outstanding contributions towards the Reimagined Schedule Development - Integrated Planning System.
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+        \textit{Mar 2023}}
+            \textbf{Insta Rise Award}
+            
+            \textit{Saravanan Thoppae, Senior Project Manager (ADM), Infosys Limited}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            For excellent contributions to the project by turning around technically complex and challenging tasks within a short turnaround time.
+        \end{onecolentry}
+
+    \section{Technical Skills}
+        \begin{onecolentry}
+            \textbf{Core Technologies:} React.js, Redux Toolkit, Next.js, JavaScript (ES6+), HTML5 \& CSS3, RESTful APIs, TypeScript, Julia
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Development Tools:} TeamCity, Git, Database Management Systems
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Professional Skills:} Full-Stack Development, Performance Optimization, Code Review, Mentoring, Agile Methodology, Technical Leadership
+        \end{onecolentry}
+
+\end{document}
