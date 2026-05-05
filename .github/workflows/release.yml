@@ -16,6 +16,16 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      # 🆕 Extract tag (for reuse)
+      - name: Extract tag
+        id: vars
+        run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      # 🆕 Inject version into LaTeX (non-intrusive)
+      - name: Inject version into LaTeX
+        run: |
+          echo "\\newcommand{\\version}{${{ steps.vars.outputs.TAG }}}" > version.tex
+
       - name: Compile LaTeX to PDF
         uses: xu-cheng/latex-action@v3
         with:
@@ -29,4 +39,8 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: Resume-*.pdf
+          name: Resume ${{ steps.vars.outputs.TAG }}          # 🆕 nice title
+          generate_release_notes: true                        # 🆕 auto notes
+          files: |
+            Resume-*.pdf
+            Resume.tex                                        # 🆕 attach source
