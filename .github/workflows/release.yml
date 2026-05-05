@@ -1,0 +1,31 @@
+name: Build Resume and Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX to PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: Resume.tex
+
+      - name: Rename PDF with tag
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          mv Resume.pdf Resume-${TAG}.pdf
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: Resume-*.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
