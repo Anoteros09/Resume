@@ -6,7 +6,7 @@ on:
       - 'v*'
 
 permissions:
-  contents: write   # 👈 THIS FIXES YOUR ERROR
+  contents: write 
 
 jobs:
   build:
@@ -20,14 +20,13 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: Resume.tex
-          extra_system_packages: "texlive-latex-recommended texlive-latex-extra"
 
       - name: Rename PDF with tag
         run: |
           TAG=${GITHUB_REF#refs/tags/}
-          mv Resume.pdf resume-${TAG}.pdf
+          mv Resume.pdf Resume-${TAG}.pdf
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: resume-*.pdf
+          files: Resume-*.pdf
