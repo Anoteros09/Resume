@@ -36,37 +36,33 @@ This repository contains the LaTeX source and compiled PDF of my professional re
 ### Repository Structure
 
 ```
-resume/
+.
 ├── Resume.tex       # LaTeX source code for the resume
-├── Resume.pdf       # Compiled resume in PDF format
+├── Resume.pdf       # Compiled resume in PDF format (generated automatically)
 └── README.md        # Documentation for this repository
 ```
 
 ---
 
-### Usage
+### Automated Release Process
 
-1. **Clone the Repository:**
+1. **Update the Resume:**
+   Edit the `Resume.tex` file with the latest information and commit the changes.
 
-   ```bash
-   git clone https://github.com/anuragshettigar/resume.git
-   ```
+2. **Create a Tag:**
+   Create a new Git tag to trigger the automated release process.
 
-2. **Compile the LaTeX Source:**
-   Ensure you have a LaTeX distribution installed (e.g., TeX Live, MikTeX, Overleaf). Then run:
+3. **Automated PDF Generation:**
+   GitHub Actions will automatically compile the LaTeX source into a PDF using `pdflatex`.
 
-   ```bash
-   pdflatex resume.tex
-   ```
-
-3. **View the PDF:**
-   Open the `resume.pdf` file using any PDF viewer.
+4. **Release Attachment:**
+   The generated PDF is attached to the latest GitHub release for easy download.
 
 ---
 
 ### License
 
-This resume is © 2025 Anurag Shettigar. Please contact me for permissions regarding reproduction or reuse.
+This resume is © 2026 Anurag Shettigar. Please contact me for permissions regarding reproduction or reuse.
 
 ---
 
