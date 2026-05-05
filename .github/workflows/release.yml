@@ -43,4 +43,4 @@ jobs:
           generate_release_notes: true                        # 🆕 auto notes
           files: |
             Resume-*.pdf
-            Resume.tex                                        # 🆕 attach source
+            *.tex                                        # 🆕 attach source
